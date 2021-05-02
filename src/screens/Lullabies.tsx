@@ -4,13 +4,13 @@ import { Paragraph } from "react-native-paper";
 import { Context } from "../context";
 import { SafeAreaView } from "../utils";
 
-interface HomeProps {}
+interface LullabiesProps {}
 
-export const Home: React.FC<HomeProps> = ({}) => {
+export const Lullabies: React.FC<LullabiesProps> = ({}) => {
   useContext(Context);
   return (
     <SafeAreaView>
-      <Paragraph>{i18n.t("home.home")}</Paragraph>
+      <Paragraph>{i18n.t("lullabies.lullabies")}</Paragraph>
     </SafeAreaView>
   );
 };
