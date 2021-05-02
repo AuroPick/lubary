@@ -1,11 +1,14 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleProp, View, ViewStyle } from "react-native";
 
-interface CenterProps {}
+interface CenterProps {
+  children: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+}
 
-export const Center: React.FC<CenterProps> = ({ children }) => {
+export const Center: React.FC<CenterProps> = ({ children, style }) => {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={[{ alignItems: "center", justifyContent: "center" }, style]}>
       {children}
     </View>
   );
