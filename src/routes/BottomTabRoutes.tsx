@@ -1,32 +1,57 @@
-import React from "react";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { BottomTabRoutesParamList } from "../params/BottomTabRoutesParamList";
-import { Home, Ninni, Settings } from "../screens";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { locale } from "expo-localization";
+import i18n from "i18n-js";
+import React from "react";
+import { en, tr } from "../locales";
+import { BottomTabRoutesParamList } from "../params/BottomTabRoutesParamList";
+import { Home, Lullabies, Settings } from "../screens";
 
 interface BottomTabRoutes {}
+
+i18n.translations = {
+  en,
+  tr,
+};
+
+i18n.locale = locale;
+
+i18n.fallbacks = true;
 
 const Tab = createMaterialBottomTabNavigator<BottomTabRoutesParamList>();
 
 export const BottomTabRoutes: React.FC<BottomTabRoutes> = ({}) => {
   return (
     <Tab.Navigator
-      initialRouteName="Ana Sayfa"
+      initialRouteName="Home"
+      shifting={true}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
-          if (route.name === "Ana Sayfa") {
+          if (route.name === "Home") {
             return <AntDesign name={"home"} color={color} size={20} />;
-          } else if (route.name === "Ninniler") {
+          } else if (route.name === "Lullabies") {
             return <Ionicons name={"musical-note"} color={color} size={20} />;
-          } else if (route.name === "Ayarlar") {
+          } else if (route.name === "Settings") {
             return <AntDesign name={"setting"} color={color} size={20} />;
           }
         },
       })}
     >
-      <Tab.Screen name="Ana Sayfa" component={Home} />
-      <Tab.Screen name="Ninniler" component={Ninni} />
-      <Tab.Screen name="Ayarlar" component={Settings} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{ tabBarLabel: i18n.t("home.home") }}
+      />
+      <Tab.Screen
+        name="Lullabies"
+        component={Lullabies}
+        options={{ tabBarLabel: i18n.t("lullabies.lullabies") }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{ tabBarLabel: i18n.t("settings.settings") }}
+      />
     </Tab.Navigator>
   );
 };
