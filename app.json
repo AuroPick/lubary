@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "NinniApp",
+    "entryPoint": "./src/index",
     "slug": "NinniApp",
     "version": "1.0.0",
     "orientation": "portrait",
