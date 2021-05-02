@@ -1,0 +1,30 @@
+{
+    "home": {
+        "home": "Home"
+    },
+    "lullabies": {
+        "lullabies": "Lullabies"
+    },
+    "settings": {
+        "settings": "Settings",
+        "language": "Language",
+        "darkTheme": "Dark Theme",
+        "english": "English",
+        "turkish": "Turkish",
+        "selectLanguage": "Select Language",
+        "saved": "Saved",
+        "savedLanguageMessage": "The language has been changed to {{language}}.",
+        "notSaved": "Not Saved",
+        "notSavedLanguageMessage": "An error occurred while saving the language.",
+        "notLoadedLanguageMessage": "An error occurred while loading the language.",
+        "ok": "Ok",
+        "cancel": "Cancel",
+        "notLoaded": "Not Loaded",
+        "notLoadedThemeMessage": "An error occurred while loading the theme.",
+        "notSavedThemeMessage": "An error occurred while saving the theme.",
+        "savedThemeMessage": "The theme has been changed to {{theme}}",
+        "notLoadedSettings": "An error occurred while loading the app settings",
+        "dark": "dark",
+        "light": "light"
+    }
+}

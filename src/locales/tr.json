@@ -1,0 +1,30 @@
+{
+    "home": {
+        "home": "Ana Sayfa"
+    },
+    "lullabies": {
+        "lullabies": "Ninniler"
+    },
+    "settings": {
+        "settings": "Ayarlar",
+        "language": "Dil",
+        "darkTheme": "Koyu Tema",
+        "english": "İngilizce",
+        "turkish": "Türkçe",
+        "selectLanguage": "Dil Seçin",
+        "saved": "Kaydedildi",
+        "savedLanguageMessage": "Dil {{language}} olarak değiştirildi.",
+        "notSaved": "Kaydedilmedi",
+        "notSavedLanguageMessage": "Dili kaydederken bir hata oluştu.",
+        "notLoadedLanguageMessage": "Dil yüklenirken bir hata oluştu.",
+        "ok": "Tamam",
+        "cancel": "İptal",
+        "notLoaded": "Yüklenmedi",
+        "notLoadedThemeMessage": "Tema yüklenirken bir hata oluştu.",
+        "notSavedThemeMessage": "Temayı kaydederken bir hata oluştu.",
+        "savedThemeMessage": "Tema {{theme}} olarak değiştirildi.",
+        "notLoadedSettings": "Uygulama ayarlarını yüklerken bir hata oluştu.",
+        "dark": "koyu",
+        "light": "açık"
+    }
+}
