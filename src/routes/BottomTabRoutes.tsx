@@ -4,10 +4,16 @@ import { locale } from "expo-localization";
 import i18n from "i18n-js";
 import React from "react";
 import { en, tr } from "../locales";
-import { BottomTabRoutesParamList } from "../params/BottomTabRoutesParamList";
 import { Home, Lullabies, Settings } from "../screens";
 
 interface BottomTabRoutes {}
+
+type BottomTabRoutesParamList = {
+  Home: undefined;
+  Lullabies: undefined;
+  Settings: undefined;
+};
+
 
 i18n.translations = {
   en,
