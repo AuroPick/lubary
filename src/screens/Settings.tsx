@@ -1,14 +1,14 @@
 import i18n from "i18n-js";
 import React, { useContext } from "react";
 import { Text } from "react-native-paper";
-import { LangaugeSelector, ThemeSelector } from "../components";
-import { Context } from "../context";
+import { Feedback, LangaugeSelector, ThemeSelector } from "../components";
+import { LanguageContext } from "../contexts";
 import { HorizontalCenter, SafeAreaView } from "../utils";
 
 interface SettingsProps {}
 
 export const Settings: React.FC<SettingsProps> = () => {
-  useContext(Context);
+  useContext(LanguageContext);
 
   return (
     <SafeAreaView>
@@ -28,6 +28,7 @@ export const Settings: React.FC<SettingsProps> = () => {
       </HorizontalCenter>
       <ThemeSelector />
       <LangaugeSelector />
+      <Feedback />
     </SafeAreaView>
   );
 };
