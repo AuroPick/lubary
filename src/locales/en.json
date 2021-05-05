@@ -25,6 +25,7 @@
         "savedThemeMessage": "The theme has been changed to {{theme}}",
         "notLoadedSettings": "An error occurred while loading the app settings",
         "dark": "dark",
-        "light": "light"
+        "light": "light",
+        "feedback": "Rate The App"
     }
 }

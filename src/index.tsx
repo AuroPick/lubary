@@ -1,13 +1,15 @@
 import { registerRootComponent } from "expo";
 import React from "react";
 import { App } from "./App";
-import { ContextProvider } from "./context";
+import { LanguageContextProvider, ThemeContextProvider } from "./contexts";
 
 export function index() {
   return (
-    <ContextProvider>
-      <App />
-    </ContextProvider>
+    <ThemeContextProvider>
+      <LanguageContextProvider>
+        <App />
+      </LanguageContextProvider>
+    </ThemeContextProvider>
   );
 }
 

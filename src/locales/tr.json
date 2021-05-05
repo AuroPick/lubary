@@ -25,6 +25,7 @@
         "savedThemeMessage": "Tema {{theme}} olarak değiştirildi.",
         "notLoadedSettings": "Uygulama ayarlarını yüklerken bir hata oluştu.",
         "dark": "koyu",
-        "light": "açık"
+        "light": "açık",
+        "feedback": "Uygulamayı Oyla"
     }
 }

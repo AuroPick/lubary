@@ -14,7 +14,7 @@ export const VerticalCenter: React.FC<VerticalCenterProps> = ({
   return (
     <View
       style={[
-        styleObj.flexDirection === "row"
+        styleObj?.flexDirection === "row"
           ? { alignItems: "center" }
           : { justifyContent: "center" },
         style,

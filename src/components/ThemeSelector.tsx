@@ -3,13 +3,13 @@ import i18n from "i18n-js";
 import React, { useContext } from "react";
 import { View } from "react-native";
 import { Switch, Text, useTheme } from "react-native-paper";
-import { Context } from "../context";
+import { ThemeContext } from "../contexts";
 import { VerticalCenter } from "../utils";
 
 interface ThemeSelectorProps {}
 
 export const ThemeSelector: React.FC<ThemeSelectorProps> = () => {
-  const { darkTheme, changeTheme } = useContext(Context);
+  const { darkTheme, changeTheme } = useContext(ThemeContext);
   const { colors } = useTheme();
 
   return (

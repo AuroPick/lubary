@@ -14,7 +14,6 @@ type BottomTabRoutesParamList = {
   Settings: undefined;
 };
 
-
 i18n.translations = {
   en,
   tr,

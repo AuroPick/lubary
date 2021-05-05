@@ -17,14 +17,15 @@ import {
   Provider as PaperProvider
 } from "react-native-paper";
 import Toast from "react-native-toast-message";
-import { Context } from "./context";
+import { LanguageContext, ThemeContext } from "./contexts";
 import { BottomTabRoutes } from "./routes";
 
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 
 export function App() {
-  const { darkTheme, loadTheme, loadLanguage } = useContext(Context);
+  const { darkTheme, loadTheme } = useContext(ThemeContext);
+  const { loadLanguage } = useContext(LanguageContext);
 
   useEffect(() => {
     const preLoad = async () => {

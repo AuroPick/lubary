@@ -5,13 +5,14 @@ import { View } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import Flag from "react-native-flags-typescript";
 import { Text, useTheme } from "react-native-paper";
-import { Context } from "../context";
+import { LanguageContext, ThemeContext } from "../contexts";
 import { VerticalCenter } from "../utils";
 
 interface LangaugeSelectorProps {}
 
 export const LangaugeSelector: React.FC<LangaugeSelectorProps> = () => {
-  const { language, changeLanguage, darkTheme } = useContext(Context);
+  const { language, changeLanguage } = useContext(LanguageContext);
+  const { darkTheme } = useContext(ThemeContext);
   const { colors } = useTheme();
 
   return (
