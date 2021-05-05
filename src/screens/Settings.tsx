@@ -1,5 +1,5 @@
 import i18n from "i18n-js";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text } from "react-native-paper";
 import { Feedback, LangaugeSelector, ThemeSelector } from "../components";
 import { LanguageContext } from "../contexts";
@@ -8,7 +8,14 @@ import { HorizontalCenter, SafeAreaView } from "../utils";
 interface SettingsProps {}
 
 export const Settings: React.FC<SettingsProps> = () => {
+  const [render, setRender] = useState(false);
   useContext(LanguageContext);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRender(true);
+    }, 1);
+  }, []);
 
   return (
     <SafeAreaView>
@@ -28,7 +35,7 @@ export const Settings: React.FC<SettingsProps> = () => {
       </HorizontalCenter>
       <ThemeSelector />
       <LangaugeSelector />
-      <Feedback />
+      {render && <Feedback />}
     </SafeAreaView>
   );
 };
