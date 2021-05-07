@@ -3,6 +3,7 @@ import i18n from "i18n-js";
 import Lottie from "lottie-react-native";
 import React, { useContext, useEffect, useRef } from "react";
 import { Button } from "react-native-paper";
+import feedbackAnimation from "../animations/feedback.json";
 import { LanguageContext } from "../contexts";
 import { Center, HorizontalCenter } from "../utils";
 
@@ -23,7 +24,7 @@ export const Feedback: React.FC<FeedbackProps> = ({}) => {
         <Lottie
           ref={animation}
           style={{ width: 200 }}
-          source={require("../animations/feedback.json")}
+          source={feedbackAnimation}
           loop
         />
         <Button

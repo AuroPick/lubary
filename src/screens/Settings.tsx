@@ -14,7 +14,7 @@ export const Settings: React.FC<SettingsProps> = () => {
   useEffect(() => {
     setTimeout(() => {
       setRender(true);
-    }, 1);
+    }, 4);
   }, []);
 
   return (

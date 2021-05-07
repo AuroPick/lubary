@@ -29,7 +29,7 @@ export const BottomTabRoutes: React.FC<BottomTabRoutes> = ({}) => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      shifting={true}
+      shifting
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color }) => {
           if (route.name === "Home") {
