@@ -16,6 +16,7 @@ import {
   DefaultTheme as PaperDefaultTheme,
   Provider as PaperProvider
 } from "react-native-paper";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
 import { LanguageContext, ThemeContext } from "./contexts";
 import { BottomTabRoutes } from "./routes";
@@ -55,14 +56,18 @@ export function App() {
   }, []);
 
   return (
-    <PaperProvider theme={darkTheme ? CombinedDarkTheme : CombinedDefaultTheme}>
-      <NavigationContainer
+    <SafeAreaProvider>
+      <PaperProvider
         theme={darkTheme ? CombinedDarkTheme : CombinedDefaultTheme}
       >
-        <BottomTabRoutes />
-        {darkTheme ? <StatusBar style="light" /> : <StatusBar style="dark" />}
-        <Toast ref={(ref) => Toast.setRef(ref)} />
-      </NavigationContainer>
-    </PaperProvider>
+        <NavigationContainer
+          theme={darkTheme ? CombinedDarkTheme : CombinedDefaultTheme}
+        >
+          <BottomTabRoutes />
+          {darkTheme ? <StatusBar style="light" /> : <StatusBar style="dark" />}
+          <Toast ref={(ref) => Toast.setRef(ref)} />
+        </NavigationContainer>
+      </PaperProvider>
+    </SafeAreaProvider>
   );
 }

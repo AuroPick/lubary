@@ -4,12 +4,17 @@ import React, { useCallback, useContext, useState } from "react";
 import { Text } from "react-native-paper";
 import { Feedback, LangaugeSelector, ThemeSelector } from "../components";
 import { LanguageContext } from "../contexts";
-import { HorizontalCenter, SafeAreaView } from "../utils";
+import { HorizontalCenter } from "../utils";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { View } from "react-native";
 
 interface SettingsProps {}
 
 export const Settings: React.FC<SettingsProps> = () => {
   const [render, setRender] = useState(false);
+
+  const insets = useSafeAreaInsets();
+
   useContext(LanguageContext);
 
   useFocusEffect(
@@ -21,7 +26,7 @@ export const Settings: React.FC<SettingsProps> = () => {
   );
 
   return (
-    <SafeAreaView>
+    <View style={{ marginTop: insets.top }}>
       <HorizontalCenter
         style={{
           paddingTop: 10,
@@ -39,6 +44,6 @@ export const Settings: React.FC<SettingsProps> = () => {
       <ThemeSelector />
       <LangaugeSelector />
       {render && <Feedback />}
-    </SafeAreaView>
+    </View>
   );
 };
