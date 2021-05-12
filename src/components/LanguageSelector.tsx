@@ -1,19 +1,28 @@
 import { Ionicons } from "@expo/vector-icons";
 import i18n from "i18n-js";
-import React, { useContext } from "react";
-import { View } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { Platform, View } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import Flag from "react-native-flags-typescript";
 import { Text, useTheme } from "react-native-paper";
 import { LanguageContext, ThemeContext } from "../contexts";
 import { VerticalCenter } from "../utils";
 
-interface LangaugeSelectorProps {}
+interface LanguageSelectorProps {}
 
-export const LangaugeSelector: React.FC<LangaugeSelectorProps> = () => {
+export const LanguageSelector: React.FC<LanguageSelectorProps> = () => {
+  const [zIndex, setZIndex] = useState(5000);
+
   const { language, changeLanguage } = useContext(LanguageContext);
   const { darkTheme } = useContext(ThemeContext);
+
   const { colors } = useTheme();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setZIndex(6000);
+    }, 1);
+  }, []);
 
   return (
     <View
@@ -50,11 +59,10 @@ export const LangaugeSelector: React.FC<LangaugeSelectorProps> = () => {
         onChangeItem={(language: { value: string; label: string }) =>
           changeLanguage({ value: language.value, label: language.label })
         }
-        containerStyle={{ height: 40 }}
+        containerStyle={{ height: 40, width: 120 }}
         style={{
           backgroundColor: colors.surface,
           borderColor: colors.surface,
-          width: 120,
         }}
         itemStyle={{
           justifyContent: "flex-start",
@@ -67,6 +75,7 @@ export const LangaugeSelector: React.FC<LangaugeSelectorProps> = () => {
           color: colors.text,
         }}
         arrowColor={colors.text}
+        zIndex={Platform.OS === "android" ? zIndex : undefined}
       />
     </View>
   );

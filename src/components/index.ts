@@ -1,3 +1,3 @@
 export * from "./Feedback";
-export * from "./LangaugeSelector";
+export * from "./LanguageSelector";
 export * from "./ThemeSelector";
