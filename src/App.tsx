@@ -2,19 +2,20 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
-  NavigationContainer
+  NavigationContainer,
 } from "@react-navigation/native";
 import merge from "deepmerge";
+import { AdMobInterstitial } from "expo-ads-admob";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import i18n from "i18n-js";
 import React, { useContext, useEffect } from "react";
-import { Alert } from "react-native";
+import { Alert, Platform } from "react-native";
 import {
   DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
-  Provider as PaperProvider
+  Provider as PaperProvider,
 } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
@@ -23,6 +24,11 @@ import { BottomTabRoutes } from "./routes";
 
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
+
+const interstitialID = Platform.select({
+  ios: "ca-app-pub-3940256099942544/4411468910",
+  android: "ca-app-pub-3940256099942544/1033173712",
+});
 
 export function App() {
   const { darkTheme, loadTheme } = useContext(ThemeContext);
@@ -49,6 +55,11 @@ export function App() {
         );
       } finally {
         await SplashScreen.hideAsync();
+        await AdMobInterstitial.setAdUnitID(
+          interstitialID ? interstitialID : ""
+        );
+        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
+        await AdMobInterstitial.showAdAsync();
       }
     };
 
