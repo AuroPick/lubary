@@ -25,10 +25,11 @@ import { BottomTabRoutes } from "./routes";
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 
-const interstitialID = Platform.select({
-  ios: "ca-app-pub-3940256099942544/4411468910",
-  android: "ca-app-pub-3940256099942544/1033173712",
-});
+const interstitialID =
+  Platform.select({
+    ios: "ca-app-pub-3940256099942544/4411468910",
+    android: "ca-app-pub-3940256099942544/1033173712",
+  }) || "";
 
 export function App() {
   const { darkTheme, loadTheme } = useContext(ThemeContext);
@@ -55,15 +56,21 @@ export function App() {
         );
       } finally {
         await SplashScreen.hideAsync();
-        await AdMobInterstitial.setAdUnitID(
-          interstitialID ? interstitialID : ""
-        );
+      }
+    };
+
+    const showInterstitialAd = async () => {
+      try {
+        await AdMobInterstitial.setAdUnitID(interstitialID);
         await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
         await AdMobInterstitial.showAdAsync();
+      } catch (error) {
+        console.log(error);
       }
     };
 
     preLoad();
+    showInterstitialAd();
   }, []);
 
   return (
