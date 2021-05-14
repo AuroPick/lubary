@@ -8,7 +8,7 @@ import merge from "deepmerge";
 import { AdMobInterstitial } from "expo-ads-admob";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
+import { setStatusBarStyle, StatusBar } from "expo-status-bar";
 import i18n from "i18n-js";
 import React, { useContext, useEffect } from "react";
 import { Alert, Platform } from "react-native";
@@ -34,6 +34,14 @@ const interstitialID =
 export function App() {
   const { darkTheme, loadTheme } = useContext(ThemeContext);
   const { loadLanguage } = useContext(LanguageContext);
+
+  AdMobInterstitial.addEventListener("interstitialDidOpen", () => {
+    setStatusBarStyle("light");
+  });
+
+  AdMobInterstitial.addEventListener("interstitialDidClose", () => {
+    darkTheme ? setStatusBarStyle("light") : setStatusBarStyle("dark");
+  });
 
   useEffect(() => {
     const preLoad = async () => {
