@@ -43,7 +43,7 @@ export const Feedback: React.FC<FeedbackProps> = ({}) => {
             style={{ marginTop: 20 }}
             icon="star"
             mode="contained"
-            onPress={() => openURL("https://github.com/AuroPick/ninni-app")}
+            onPress={() => openURL("https://github.com/AuroPick/lubary")}
           >
             {i18n.t("settings.feedback")}
           </Button>

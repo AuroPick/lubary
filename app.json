@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "NinniApp",
+    "name": "Lubary",
     "entryPoint": "./src/index",
-    "slug": "NinniApp",
+    "slug": "lubary",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
