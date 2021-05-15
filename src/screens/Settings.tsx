@@ -2,7 +2,7 @@ import { useFocusEffect } from "@react-navigation/core";
 import { AdMobBanner } from "expo-ads-admob";
 import i18n from "i18n-js";
 import React, { useCallback, useContext, useState } from "react";
-import { Platform, View } from "react-native";
+import { Platform, ScrollView } from "react-native";
 import { Text } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Feedback, LanguageSelector, ThemeSelector } from "../components";
@@ -32,7 +32,10 @@ export const Settings: React.FC<SettingsProps> = () => {
   );
 
   return (
-    <View style={{ marginTop: insets.top }}>
+    <ScrollView
+      style={{ marginTop: insets.top, height: "100%" }}
+      contentContainerStyle={{ paddingBottom: 20 }}
+    >
       <HorizontalCenter
         style={{
           paddingTop: 10,
@@ -57,6 +60,6 @@ export const Settings: React.FC<SettingsProps> = () => {
       <ThemeSelector />
       <LanguageSelector />
       {render && <Feedback />}
-    </View>
+    </ScrollView>
   );
 };
