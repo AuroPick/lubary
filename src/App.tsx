@@ -53,6 +53,8 @@ export function App() {
           ...MaterialCommunityIcons.font,
           ...Ionicons.font,
         });
+        await AdMobInterstitial.setAdUnitID(interstitialID);
+        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
       } catch {
         Alert.alert(
           i18n.t("settings.notLoaded"),
@@ -69,16 +71,16 @@ export function App() {
 
     const showInterstitialAd = async () => {
       try {
-        await AdMobInterstitial.setAdUnitID(interstitialID);
-        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
         await AdMobInterstitial.showAdAsync();
       } catch (error) {
         console.log(error);
       }
     };
 
-    preLoad();
-    showInterstitialAd();
+    (async () => {
+      await preLoad();
+      await showInterstitialAd();
+    })();
   }, []);
 
   return (
