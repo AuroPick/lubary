@@ -7,6 +7,7 @@ import {
 import merge from "deepmerge";
 import { AdMobInterstitial } from "expo-ads-admob";
 import * as Font from "expo-font";
+import { getNetworkStateAsync } from "expo-network";
 import * as SplashScreen from "expo-splash-screen";
 import { setStatusBarStyle, StatusBar } from "expo-status-bar";
 import i18n from "i18n-js";
@@ -31,6 +32,20 @@ const interstitialID =
     android: "ca-app-pub-3940256099942544/1033173712",
   }) || "";
 
+AdMobInterstitial.addEventListener("interstitialDidLoad", () => {
+  setTimeout(async () => {
+    try {
+      await AdMobInterstitial.showAdAsync();
+    } catch (error) {
+      console.log(`failed to show interstitial ad ${error}`);
+    }
+  }, 300);
+});
+
+AdMobInterstitial.addEventListener("interstitialDidFailToLoad", () => {
+  console.log("failed to load interstitial ad");
+});
+
 export function App() {
   const { darkTheme, loadTheme } = useContext(ThemeContext);
   const { loadLanguage } = useContext(LanguageContext);
@@ -47,14 +62,23 @@ export function App() {
     const preLoad = async () => {
       try {
         await SplashScreen.preventAutoHideAsync();
+
         loadLanguage();
         loadTheme();
+
         await Font.loadAsync({
           ...MaterialCommunityIcons.font,
           ...Ionicons.font,
         });
-        await AdMobInterstitial.setAdUnitID(interstitialID);
-        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true });
+
+        const { isInternetReachable } = await getNetworkStateAsync();
+
+        if (isInternetReachable) {
+          await AdMobInterstitial.setAdUnitID(interstitialID);
+          await AdMobInterstitial.requestAdAsync({
+            servePersonalizedAds: true,
+          });
+        }
       } catch {
         Alert.alert(
           i18n.t("settings.notLoaded"),
@@ -69,17 +93,8 @@ export function App() {
       }
     };
 
-    const showInterstitialAd = async () => {
-      try {
-        await AdMobInterstitial.showAdAsync();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     (async () => {
       await preLoad();
-      await showInterstitialAd();
     })();
   }, []);
 

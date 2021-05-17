@@ -5504,6 +5504,11 @@ expo-localization@~10.1.0:
   dependencies:
     rtl-detect "^1.0.2"
 
+expo-network@~3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/expo-network/-/expo-network-3.1.1.tgz#05a3c0e6cd598b7650e2fd02a8e201866e788be5"
+  integrity sha512-ryhq8PQIY8GbvmLXHPEXJ8WUGKdnwr4CfT8Y/BsGLZzyjoied+9tgaWmdV4pOCWd/hcBoTqr9q3hlUbZDCDLJw==
+
 expo-pwa@0.0.76:
   version "0.0.76"
   resolved "https://registry.yarnpkg.com/expo-pwa/-/expo-pwa-0.0.76.tgz#440bfb2191fa3d403f836ebba4e730cdedbfc8f9"
