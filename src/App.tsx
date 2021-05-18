@@ -5,7 +5,7 @@ import {
   NavigationContainer,
 } from "@react-navigation/native";
 import merge from "deepmerge";
-import { AdMobInterstitial } from "expo-ads-admob";
+import { AdMobInterstitial, isAvailableAsync } from "expo-ads-admob";
 import * as Font from "expo-font";
 import { getNetworkStateAsync } from "expo-network";
 import * as SplashScreen from "expo-splash-screen";
@@ -71,15 +71,19 @@ export function App() {
           ...Ionicons.font,
         });
 
-        const { isInternetReachable } = await getNetworkStateAsync();
+        try {
+          const { isInternetReachable } = await getNetworkStateAsync();
 
-        if (isInternetReachable) {
-          await AdMobInterstitial.setAdUnitID(interstitialID);
-          await AdMobInterstitial.requestAdAsync({
-            servePersonalizedAds: true,
-          });
+          if (isInternetReachable) {
+            await AdMobInterstitial.setAdUnitID(interstitialID);
+            await AdMobInterstitial.requestAdAsync({
+              servePersonalizedAds: true,
+            });
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch {
+      } catch (error) {
         Alert.alert(
           i18n.t("settings.notLoaded"),
           i18n.t("settings.notLoadedSettings"),
@@ -88,6 +92,8 @@ export function App() {
             { text: i18n.t("settings.ok"), onPress: () => {} },
           ]
         );
+
+        console.log(error);
       } finally {
         await SplashScreen.hideAsync();
       }
